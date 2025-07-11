@@ -35,9 +35,8 @@ client_secret = "..." # Your Discord client secret used for Oauth2
 You can also set the config values using environment variables. For example `KITE_DISCORD__CLIENT_ID` will set the discord client id.
 
 ### Using Docker (docker-compose)
-
-Install Docker and docker-compose and create a docker-compose.yaml file with the following contents:
-
+1. Install Docker. Follow the official tutorial on [docs.docker.com](https://docs.docker.com/engine/install/)
+2. Create a `compose.yml` file with the following content
 ```yaml
 services:
   postgres:
@@ -78,9 +77,10 @@ services:
 volumes:
   kite-local-postgres:
 ```
+3. Create a `kite.toml` file next to your `compose.yml` and paste this config => [kite.example](https://github.com/merlinfuchs/kite/blob/main/kite-service/internal/config/default.toml)
+4. Start Kite with `docker compose up -d`
 
-Run the file using `docker-compose up`. It will automatically mount the `kite.toml` file into the container. You should not configure postgres in your config file as it's using the postgres instance from the container.
-
+You should not configure postgres in your config file as it's using the postgres instance from the container.  
 Kite should now be accessible in your browser at [localhost:8080](http://localhost:8080).
 
 ### Building from source
